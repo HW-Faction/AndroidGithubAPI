@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "114161024895",
+    "project_id": "githubapi-419e0",
+    "storage_bucket": "githubapi-419e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114161024895:android:21dd8330c1c708d5b0244a",
+        "android_client_info": {
+          "package_name": "app.githubapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114161024895-cnun3ldtic7ak94bh2r9ma044qh27irp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCV69t9frQeqkQkfpVO8Ke-iygURqNWpIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114161024895-cnun3ldtic7ak94bh2r9ma044qh27irp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114161024895:android:75199214112c21c2b0244a",
+        "android_client_info": {
+          "package_name": "kotlin.githubapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114161024895-cnun3ldtic7ak94bh2r9ma044qh27irp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCV69t9frQeqkQkfpVO8Ke-iygURqNWpIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114161024895-cnun3ldtic7ak94bh2r9ma044qh27irp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
