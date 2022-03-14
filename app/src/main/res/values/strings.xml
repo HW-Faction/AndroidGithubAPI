@@ -12,13 +12,13 @@
     <string name="close">Close</string>
 
     <string-array name="programming_languages">
-        <item>C</item>
-        <item>Python</item>
-        <item>Java</item>
-        <item>C++</item>
-        <item>Ruby</item>
-        <item>JavaScript</item>
-        <item>C#</item>
-        <item>Swift</item>
+        <item>c</item>
+        <item>python</item>
+        <item>java</item>
+        <item>c++</item>
+        <item>ruby</item>
+        <item>javascript</item>
+        <item>c#</item>
+        <item>swift</item>
     </string-array>
 </resources>

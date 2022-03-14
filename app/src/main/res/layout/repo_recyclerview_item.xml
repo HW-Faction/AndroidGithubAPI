@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:textColor="@color/primary_blue"
+            android:textStyle="bold"
+            android:id="@+id/name"
+            android:fontFamily="@font/cabin_regular"
+            android:textSize="20sp"
+            android:text="TheRealHW / FFTVideoMater"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/cabin_regular"
+            android:textSize="14sp"
+            android:textColor="#787878"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_gravity="center"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_star_24" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:fontFamily="@font/cabin_regular"
+                android:textSize="14sp"
+                android:layout_marginStart="5dp"
+                android:id="@+id/totalStars"
+                android:textColor="#878787"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

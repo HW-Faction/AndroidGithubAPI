@@ -9,26 +9,6 @@
     tools:context=".ui.MainActivity"
     tools:openDrawer="start">
 
-    <include
-        android:visibility="gone"
-        layout="@layout/app_bar_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@color/primary_blue"
-        app:headerLayout="@layout/nav_header"
-        app:itemBackground="@drawable/menu_item_padding"
-        app:itemHorizontalPadding="40dp"
-        app:itemIconTint="#fff"
-        app:itemTextAppearance="@style/TextViewStyle"
-        app:menu="@menu/menu" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -86,7 +66,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view5" />
 
-
         <Button
             android:id="@+id/btnGetRepos"
             android:layout_width="0dp"
@@ -106,14 +85,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
-        <ProgressBar
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:visibility="gone"
-            android:id="@+id/progress_circular_login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.mikepenz.materialdrawer.widget.MaterialDrawerSliderView
+        android:id="@+id/slider"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true" />
+
 </androidx.drawerlayout.widget.DrawerLayout>

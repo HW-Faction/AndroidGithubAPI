@@ -17,12 +17,19 @@ import app.githubapi.R
 import app.githubapi.repository.MainRepository
 import app.githubapi.viewmodel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem
+import com.mikepenz.materialdrawer.model.interfaces.descriptionText
+import com.mikepenz.materialdrawer.model.interfaces.iconRes
+import com.mikepenz.materialdrawer.model.interfaces.nameRes
+import com.mikepenz.materialdrawer.model.interfaces.nameText
+import com.mikepenz.materialdrawer.util.addItems
+import com.mikepenz.materialdrawer.widget.AccountHeaderView
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
-    var toggle: ActionBarDrawerToggle? = null
     var toolbar: Toolbar? = null
 
     private val TAG = "MainActivity.kt"
@@ -34,30 +41,44 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolBar)
         setSupportActionBar(toolbar)
 
-        toggle = ActionBarDrawerToggle(
-            this,
-            drawerLayout,
-            toolbar,
-            R.string.open,
-            R.string.close
-        )
-        drawerLayout.addDrawerListener(toggle!!)
-        toggle!!.syncState()
-
-        nav_view.setNavigationItemSelectedListener {
-            if (it.itemId == R.id.logout) {
-                FirebaseAuth.getInstance().signOut()
-                Toast.makeText(this, "User has been logged out", Toast.LENGTH_SHORT).show()
-                Intent(this, LoginActivity::class.java).apply {
-                    startActivity(intent)
+        // Create the AccountHeader
+        val headerView = AccountHeaderView(this).apply {
+            attachToSliderView(slider) // attach to the slider
+            addProfiles(
+                ProfileDrawerItem().apply {
+                    nameText =
+                        FirebaseAuth.getInstance().currentUser?.displayName.toString(); descriptionText =
+                    FirebaseAuth.getInstance().currentUser?.email.toString(); iconRes =
+                    R.drawable.ic_person; identifier = 102
                 }
+            )
+            onAccountHeaderListener = { view, profile, current ->
+                // react to profile changes
+                Toast.makeText(this@MainActivity, "Acc", Toast.LENGTH_SHORT).show()
+
+                false
             }
+            withSavedInstance(savedInstanceState)
+        }
+        headerView.selectionListEnabledForSingleProfile = false
+
+        val item1 = PrimaryDrawerItem().apply {
+            nameRes = R.string.drawer_item_logout; identifier = 1; isEnabled = true; isSelectable =
             true
         }
-
-       nav_view.getHeaderView(0).findViewById<TextView>(R.id.name_nav_drawer).text = FirebaseAuth.getInstance().currentUser?.displayName
-
-
+        slider.itemAdapter.add(item1)
+        // specify a click listener
+        slider.onDrawerItemClickListener = { v, drawerItem, position ->
+            if (drawerItem.identifier == 1L) {
+                Intent(this, LoginActivity::class.java).apply {
+                    Toast.makeText(this@MainActivity, "Logged Out", Toast.LENGTH_SHORT).show()
+                    FirebaseAuth.getInstance().signOut()
+                    startActivity(this)
+                    finish()
+                }
+            }
+            false
+        }
 
         ArrayAdapter.createFromResource(
             this,
@@ -71,18 +92,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnGetRepos.setOnClickListener {
-           /* val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-            viewModel.getTrendingRepos("java").observe(this, {
-                for (model in it) {
-                    Log.d(TAG, "repo name: " + model.name)
-                }
-            })*/
-
-            progress_circular_login.visibility = View.VISIBLE
-            btnGetRepos.visibility = View.INVISIBLE
-            Thread.sleep(4000L)
-            progress_circular_login.visibility = View.INVISIBLE
-            btnGetRepos.visibility = View.VISIBLE
+            Intent(this, RepoListActivity::class.java).apply {
+                this.putExtra("lang_name", spinner.selectedItem.toString())
+                startActivity(this)
+            }
         }
     }
 }

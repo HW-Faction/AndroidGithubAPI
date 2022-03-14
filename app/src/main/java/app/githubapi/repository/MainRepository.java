@@ -102,7 +102,7 @@ public class MainRepository {
         Log.d(TAG, "getTrendingRepos() :: language: " + language);
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET,
-                "https://github-trending-api.now.sh/repositories?language=" + language,
+                "https://gh-trending-api.herokuapp.com/repositories/" + language,
                 null,
                 response -> {
                     try {
@@ -111,13 +111,13 @@ public class MainRepository {
                             JSONObject jsonObject = response.getJSONObject(i);
 
                             RepoModel repoModel = new RepoModel();
-                            repoModel.setName(jsonObject.getString("name"));
-                            repoModel.setLogin(jsonObject.getString("author"));
-                            repoModel.setHtml_url(jsonObject.getString("url"));
+                            repoModel.setUsername(jsonObject.getString("username"));
                             repoModel.setDescription(jsonObject.getString("description"));
-                            repoModel.setStars(jsonObject.getString("stars"));
+                            repoModel.setUrl(jsonObject.getString("url"));
+                            repoModel.setRepositoryName(jsonObject.getString("repositoryName"));
+                            repoModel.setTotalStars(jsonObject.getString("totalStars"));
                             arrayList.add(repoModel);
-                            Log.d(TAG, "lang: " + language + " repo_name: " + repoModel.getName());
+                            Log.d(TAG, "lang: " + language + " repo_name: " + repoModel.getRepositoryName());
                         }
                         repoModelArrayList.setValue(arrayList);
                     } catch (JSONException e) {
